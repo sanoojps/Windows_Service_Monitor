@@ -15,6 +15,10 @@ Step 4) //set the scope for the connection
 
         private static ManagementScope scope = 
             new ManagementScope(ManagementPath, connectionOptions);
+
+			scope.Connect() can be used to connect to 
+			//Connect to Management Scope to actual WMI Scope
+			//if a WMI Query is to be done in the given Context 
 			
 Step 5)	//design the WQl Query String 
 

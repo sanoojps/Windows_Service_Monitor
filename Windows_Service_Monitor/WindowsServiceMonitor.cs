@@ -92,6 +92,8 @@ namespace Windows_Service_Monitor
 
            string TargetInstance_Properties_Name =
                _TargetInstance.Properties["Name"].Value.ToString();
+
+            //_TargetInstance.Properties["State"].Value.ToString();
            
             //Console.WriteLine(TargetInstance_Path_Class);
             //Console.WriteLine(TargetInstance_Properties_Name);
@@ -108,6 +110,10 @@ namespace Windows_Service_Monitor
                    {
                        case @"Spooler":
                            //System.Windows.Forms.MessageBox.Show(eventClassName);
+                           System.Windows.Forms.MessageBox.Show(
+                               "Name : " + _TargetInstance.Properties["Name"].Value.ToString() + "\n" +
+                               "State : " + _TargetInstance.Properties["State"].Value.ToString()
+                       );
                            System.Diagnostics.Debug.WriteLine(eventClassName);
                            break;
 
@@ -117,6 +123,7 @@ namespace Windows_Service_Monitor
 
 
                    break;
+
                    default:
                     break;
            }

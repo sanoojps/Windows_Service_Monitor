@@ -12,13 +12,18 @@ namespace Windows_Service_Monitor
             WindowsServiceMonitor nuMON = 
                 new WindowsServiceMonitor();
 
-            while (true)
-            {
+           
+
+           // while (true)
+           // {
                 nuMON.StartMonitor();
                 //Console.ReadLine();
                 //System.Threading.Thread.Sleep(10000);
 
-            }
+                
+
+           // }
+
 
            
 

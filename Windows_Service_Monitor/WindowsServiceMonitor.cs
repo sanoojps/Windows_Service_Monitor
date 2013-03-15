@@ -4,11 +4,19 @@ using System.Text;
 using System.Management;
 using System.Diagnostics;
 
+using NotificationWindow;
 
 namespace Windows_Service_Monitor
 {
     public class WindowsServiceMonitor
     {
+       
+        //Event
+
+        public delegate void MessageReceivedHandler(string message);
+        public event MessageReceivedHandler MessageRecieved;
+
+
          #region WMIQueryInitialSettings
              private static ConnectionOptions _connectionOptions;
              //ManagementScope required if a WMI query is also required to be made
@@ -110,12 +118,34 @@ namespace Windows_Service_Monitor
                    {
                        case @"Spooler":
                            //System.Windows.Forms.MessageBox.Show(eventClassName);
+                           /*
                            System.Windows.Forms.MessageBox.Show(
                                "Name : " + _TargetInstance.Properties["Name"].Value.ToString() + "\n" +
                                "State : " + _TargetInstance.Properties["State"].Value.ToString()
-                       );
+                       
+                            );
+                            */
                            System.Diagnostics.Debug.WriteLine(eventClassName);
+                           
+                           
+
+                          // popME.ShowPopup();
+
+                           //fire message received event
+                           if (this.MessageRecieved != null)
+                           {
+                               this.MessageRecieved(eventClassName.ToString());
+                           }
+
+                           
+                           
+                           
                            break;
+
+                       
+
+
+
 
                        default:
                            break;
